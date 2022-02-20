@@ -11,10 +11,10 @@ sudo docker rm -f hadoop-master &> /dev/null
 echo "start hadoop-master container..."
 sudo docker run -itd \
                 --net=hadoop \
-                -p 50070:50070 \
                 -p 8088:8088 \
-		-p 7077:7077 \
+                -p 7077:7077 \
 		-p 16010:16010 \
+		-p 9999:9999 \
                 --name hadoop-master \
                 --hostname hadoop-master \
                 spark-hadoop:latest &> /dev/null

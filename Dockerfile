@@ -1,6 +1,6 @@
-FROM ubuntu:16.04
+FROM ubuntu:21.10
 
-MAINTAINER Lilia Sfaxi <liliasfaxi@gmail.com>
+MAINTAINER Aboubakiri DIAW <aboubacar198@gmail.com>
 
 WORKDIR /root
 
@@ -8,32 +8,28 @@ WORKDIR /root
 RUN apt-get update && apt-get install -y openssh-server openjdk-8-jdk wget vim
 
 # install hadoop 2.7.2
-RUN wget https://github.com/kiwenlau/compile-hadoop/releases/download/2.7.2/hadoop-2.7.2.tar.gz && \
-    tar -xzvf hadoop-2.7.2.tar.gz && \
-    mv hadoop-2.7.2 /usr/local/hadoop && \
-    rm hadoop-2.7.2.tar.gz
+RUN wget https://github.com/kiwenlau/compile-hadoop/releases/download/3.3.1/hadoop-3.3.1.tar.gz && \
+    tar -xzvf hadoop-3.3.1.tar.gz && \
+    mv hadoop-3.3.1 /usr/local/hadoop && \
+    rm hadoop-3.3.1.tar.gz
 
 # install spark
-RUN wget https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz && \
-    tar -xvf spark-2.2.0-bin-hadoop2.7.tgz && \
-    mv spark-2.2.0-bin-hadoop2.7 /usr/local/spark && \
-    rm spark-2.2.0-bin-hadoop2.7.tgz
+RUN wget https://archive.apache.org/dist/spark/spark-3.2.1/spark-3.2.1.tgz  && \
+    tar -xvf spark-3.2.1-bin-hadoop3.2.tgz && \
+    mv spark-3.2.1-bin-hadoop3.2/usr/local/spark && \
+    rm spark-3.2.1-bin-hadoop3.2.tgz  
 
 # install kafka
-RUN wget https://archive.apache.org/dist/kafka/1.0.2/kafka_2.11-1.0.2.tgz && \
-    tar -xzvf kafka_2.11-1.0.2.tgz && \
-    mv kafka_2.11-1.0.2 /usr/local/kafka && \
-    rm kafka_2.11-1.0.2.tgz
+RUN wget https://archive.apache.org/dist/kafka/3.1.0/kafka_2.13-3.1.0.tgz  && \
+    tar -xzvf kafka_2.13-3.1.0.tgz  && \
+    mv kafka_2.13-3.1.0/usr/local/kafka && \
+    rm kafka_2.13-3.1.0.tgz
 
 # install hbase
-RUN wget https://archive.apache.org/dist/hbase/1.4.9/hbase-1.4.9-bin.tar.gz  && \ 
-    tar -zxvf hbase-1.4.9-bin.tar.gz && \
-    mv hbase-1.4.9 /usr/local/hbase && \
-    rm hbase-1.4.9-bin.tar.gz
-
-# copy the test files
-RUN wget https://mohetn-my.sharepoint.com/:t:/g/personal/lilia_sfaxi_insat_u-carthage_tn/EWdosZTuyDtEiqcjpqbY_loBlfQbIQWp8Zq7PPKSAE1sjQ?e=O3TNLR && \ 
-    wget  https://mohetn-my.sharepoint.com/:t:/g/personal/lilia_sfaxi_insat_u-carthage_tn/EexZfjSnlShAqDig-0efjbkBJRiHqN0POQt0t4fvXhb7Dw?e=af6lAZ
+RUN wget https://archive.apache.org/dist/hbase/2.4.9/hbase-2.4.9-src.tar.gz   && \ 
+    tar -zxvf hbase-2.4.9-bin.tar.gz && \
+    mv hbase-2.4.9/usr/local/hbase && \
+    rm hbase-2.4.9-bin.tar.gz
 
 
 # set environment variables
